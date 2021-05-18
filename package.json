@@ -1,0 +1,17 @@
+{
+  "name": "hdc-ams",
+  "version": "1.0.0",
+  "description": "end of semester project ",
+  "main": "js/main.js",
+  "scripts": {
+    "build-css": "tailwindcss build src/style.css -o public/style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.15",
+    "tailwindcss": "^2.1.2"
+  }
+}
