@@ -15,6 +15,6 @@
             <option value="teacher">Teacher</option>
             <option value="student">Student</option>
         </select>
-        <input type="submit" value="Login" name="landing_form" class="px-4 py-2 font-bold cursor-pointer rounded uppercase bg-yellow-400 text-black shadow-lg hover:transform scale-110" />
+        <input type="submit" value="Login" name="landing_form" class="btn" />
     </form>
 </main>

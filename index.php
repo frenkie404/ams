@@ -6,10 +6,10 @@
 
     $logged_in_as = get_session("logged_in_as");
     
-   switch($logged_in_as){
-        case null:
-            include "./screens/landing.php";
-            break;
+   if(!$logged_in_as){
+    include "./screens/landing.php";
+   }else{
+       redirect("/dashboard");
    }
 
     include "./includes/footer.php";

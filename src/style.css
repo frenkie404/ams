@@ -4,3 +4,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="file"] {
+  display: none;
+}
+
+.btn {
+  @apply px-4 py-2 font-bold cursor-pointer rounded uppercase w-max bg-yellow-400 text-black;
+}
+
+.btn--white {
+  @apply bg-white text-blue-600;
+}

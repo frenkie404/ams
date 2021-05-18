@@ -12,6 +12,8 @@
     include "../includes/header.php";
 ?>
 
-<main>
-    <h1>Dashboard for <?php echo get_session("logged_in_as") ?></h1>
+<main class="w-screen h-4/5 px-12 pt-3 mt-12 flex flex-row-reverse justify-between gap-8">
+    <?php
+        include "./$user_role.php";
+    ?>
 </main>
