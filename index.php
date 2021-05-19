@@ -1,17 +1,29 @@
 <?php
 
-    include "./includes/session.php";
-    include "./includes/functions.php";
-    include "./includes/header.php";
+include "./includes/session.php";
+include "./includes/functions.php";
+include "./includes/header.php";
 
-    $logged_in_as = get_session("logged_in_as");
-    
-   if(!$logged_in_as){
+function handleRouting()
+{
+  $logged_in_as = get_session("logged_in_as");
+  if (!$logged_in_as) {
     include "./screens/landing.php";
-   }else{
-       redirect("/dashboard");
-   }
+  } else {
+    redirect("/dashboard");
+  }
+}
 
-    include "./includes/footer.php";
+$error = get_session("error");
+
+if (!$error) {
+  handleRouting();
+} else {
+  switch ($error) {
+    case 500:
+      include "./screens/500.php";
+  }
+}
+
+include "./includes/footer.php";
 ?>
-

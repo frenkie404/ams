@@ -13,6 +13,18 @@
         } ?>
     </title>
 </head>
+
+<!-- check connection to database -->
+
+<?php
+include "db/connection.php";
+
+if (mysqli_connect_errno()) {
+  echo mysqli_connect_error();
+  set_session("error", "500");
+}
+?>
+
 <body class="bg-gray-200 grid place-items-center min-h-screen overflow-x-hidden font-body">
     <nav class="bg-blue-600 text-white px-12 py-4 shadow-lg w-full fixed top-0 z-10">
         <div class="flex justify-between">
