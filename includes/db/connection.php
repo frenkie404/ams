@@ -19,7 +19,7 @@ $create_teachers_table = "CREATE TABLE IF NOT EXISTS teachers (
     faculty text(4) NOT NULL,
     semester text(6) NOT NULL,
     associated_subject VARCHAR(50) NOT NULL,
-    password VARCHAR(50) DEFAULT NULL
+    password CHAR(60) DEFAULT NULL
     )";
 
 $create_students_table = "CREATE TABLE IF NOT EXISTS students (
@@ -28,7 +28,7 @@ $create_students_table = "CREATE TABLE IF NOT EXISTS students (
   email VARCHAR(50) UNIQUE NOT NULL,
   faculty text(4) NOT NULL,
   semester text(6) NOT NULL,
-  password VARCHAR(50) DEFAULT NULL
+  password CHAR(60) DEFAULT NULL
   )";
 
 if (

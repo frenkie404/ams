@@ -12,7 +12,7 @@ if (!$logged_in_as || $logged_in_as !== $user_role) {
 include "../includes/header.php";
 ?>
 
-<main class="w-screen h-4/5 px-12 pt-3 mt-12 flex flex-row-reverse justify-between gap-8">
+<main class="w-screen h-4/5 px-12 pt-3 mt-12">
     <?php include "./$user_role/index.php"; ?>
 </main>
 

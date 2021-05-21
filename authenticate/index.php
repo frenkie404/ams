@@ -1,35 +1,67 @@
 <?php
-    include "../includes/session.php";
-    include "../includes/functions.php";
+include "../includes/session.php";
+include "../includes/functions.php";
+include "../includes/db/connection.php";
 
-    if(isset($_POST["login"])){
-        validate_login();
-    }
+if (isset($_POST["login"])) {
+  validate_login();
+}
 
-    function validate_login(){
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        $user_role =  get_session("user_role");
-        
-        switch($user_role){
-            case "admin":
-                validate_admin($username, $password);
-                break;
-            case "teacher":
-                validate_teacher($username, $password);
-                break;
-            case "student":
-                validate_student($username, $password);
-                break;
-        }
-    }
+function validate_login()
+{
+  $email = $_POST["email"];
+  $password = $_POST["password"];
+  $user_role = get_session("user_role");
 
-    function validate_admin($username, $password){
-      if($username === "admin" && $password === "admin"){
-        set_session("logged_in_as", "admin");
+  if ($email === "") {
+    echo "email is empty!";
+    header("HTTP/1.1 400 Bad Request");
+    exit(400);
+  }
+
+  if ($user_role === "admin") {
+    validate_admin($email, $password);
+  } else {
+    validate_user($user_role, $email, $password);
+  }
+}
+
+function validate_admin($email, $password)
+{
+  if ($email === "admin" && $password === "admin") {
+    set_session("logged_in_as", "admin");
+    redirect("/dashboard");
+  }
+  echo "invalid credentials";
+  return false;
+}
+
+function validate_user($user_role, $email, $password)
+{
+  $table = $user_role . "s";
+  $read_query = "SELECT * FROM $table WHERE email='$email'";
+  global $conn;
+  $result = mysqli_query($conn, $read_query);
+
+  if ($result->num_rows > 0) {
+    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+    if ($user["password"] === null) {
+      set_session("logged_in_as", $user_role);
+      set_session($user_role, $user);
+      redirect("/dashboard");
+    } else {
+      if (password_verify($password, $user["password"])) {
+        set_session("logged_in_as", $user_role);
+        set_session($user_role, $user);
         redirect("/dashboard");
+      } else {
+        echo "invalid";
       }
-      echo "invalid credentials";
-      return false;
     }
+  } else {
+    header("HTTP/1.1 500 Internal Server Error");
+    echo mysqli_error($conn);
+  }
+}
 ?>
