@@ -16,3 +16,19 @@ input[type="file"] {
 .btn--white {
   @apply bg-white text-blue-600;
 }
+
+.btn--green {
+  @apply bg-green-500 text-black;
+}
+
+.btn--blue {
+  @apply bg-blue-600 text-white;
+}
+
+.btn--red {
+  @apply bg-red-500 text-black;
+}
+
+.btn--inline {
+  @apply inline-block;
+}

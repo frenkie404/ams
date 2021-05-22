@@ -31,9 +31,20 @@ $create_students_table = "CREATE TABLE IF NOT EXISTS students (
   password CHAR(60) DEFAULT NULL
   )";
 
+$create_attendance_table = "CREATE TABLE IF NOT EXISTS attendance (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  student INT(6) UNSIGNED NOT NULL,
+  teacher INT(6) UNSIGNED NOT NULL,
+  date DATETIME NOT NULL,
+  was_present BOOLEAN NOT NULL,
+  FOREIGN KEY (student) REFERENCES students(id), 
+  FOREIGN KEY (teacher) REFERENCES teachers(id) 
+  )";
+
 if (
   mysqli_query($conn, $create_teachers_table) &&
-  mysqli_query($conn, $create_students_table)
+  mysqli_query($conn, $create_students_table) &&
+  mysqli_query($conn, $create_attendance_table)
 ) {
   return header("HTTP/1.1 200 OK");
 } else {

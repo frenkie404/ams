@@ -27,13 +27,13 @@ function output_table($headings, $data, $current_user)
     }
     if ($current_user === "teacher") {
       echo "<td class=\"p-4 text-center\">
-                <a href=\"/controllers/teacher/handleAttendance?student=$id&action=present\"  class=\"btn mr-4\">Present</a>
-                <a href=\"/controllers/teacher/handleAttendance?student=$id&action=absent\"  class=\"btn\">Absent</a>
+                <a href=\"/controllers/teacher/handleAttendance.php?student_id=$id&action=present\"  class=\"btn btn--inline btn--green mr-4\">Present</a>
+                <a href=\"/controllers/teacher/handleAttendance.php?student_id=$id&action=absent\"  class=\"btn btn--inline btn--red\">Absent</a>
             </td>";
     } else {
       echo "<td class=\"p-4 text-center\">
-                <a href=\"/controllers/admin?action=edit\"  class=\"btn mr-4\">Present</a>
-                <a href=\"/controllers/admin/delete?id=x\"  class=\"btn\">Absent</a>
+                <a href=\"/controllers/admin?action=edit\"  class=\"btn btn--inline btn--blue mr-4\">Edit</a>
+                <a href=\"/controllers/admin/delete.php?id=x\"  class=\"btn btn--inline btn--red\">Delete</a>
         </td>";
     }
 
