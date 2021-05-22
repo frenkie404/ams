@@ -10,7 +10,7 @@ input[type="file"] {
 }
 
 .btn {
-  @apply px-4 py-2 font-bold cursor-pointer rounded uppercase w-max bg-yellow-400 text-black;
+  @apply block px-4 py-2 font-bold cursor-pointer rounded uppercase w-max bg-yellow-400 text-black;
 }
 
 .btn--white {
