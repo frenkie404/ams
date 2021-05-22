@@ -2,7 +2,7 @@
 $current_action = get_session("admin_action"); ?>
 
 <h1 class="text-5xl font-bold font-heading mb-12 leading-normal">
-    Create <?php echo $current_action === "create-student"
+    Create <?php echo $current_action === "create_student"
       ? "Student"
       : "Teacher"; ?>
 </h1>
@@ -41,7 +41,7 @@ $current_action = get_session("admin_action"); ?>
             </select>
         </div>
 
-    <?php if ($current_action !== "create-student") {
+    <?php if ($current_action !== "create_student") {
       echo '        
             <div class="my-6">
                 <label for="subject" class="block mb-2">subject</label>

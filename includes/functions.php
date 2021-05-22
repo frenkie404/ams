@@ -18,7 +18,6 @@ function output_table($headings, $data, $current_user)
   echo "</tr>";
 
   foreach ($data as $student) {
-    $id = $student["id"];
     echo "<tr class=\"mb-2 border-current border-b-2\">";
     foreach ($student as $key => $value) {
       if ($key !== "id") {
@@ -26,11 +25,12 @@ function output_table($headings, $data, $current_user)
       }
     }
     if ($current_user === "teacher") {
+      $id = $student["id"];
       echo "<td class=\"p-4 text-center\">
                 <a href=\"/controllers/teacher/handleAttendance.php?student_id=$id&action=present\"  class=\"btn btn--inline btn--green mr-4\">Present</a>
                 <a href=\"/controllers/teacher/handleAttendance.php?student_id=$id&action=absent\"  class=\"btn btn--inline btn--red\">Absent</a>
             </td>";
-    } else {
+    } elseif ($current_user === "admin") {
       echo "<td class=\"p-4 text-center\">
                 <a href=\"/controllers/admin?action=edit\"  class=\"btn btn--inline btn--blue mr-4\">Edit</a>
                 <a href=\"/controllers/admin/delete.php?id=x\"  class=\"btn btn--inline btn--red\">Delete</a>

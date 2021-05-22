@@ -46,7 +46,7 @@ function validate_user($user_role, $email, $password)
   if ($result->num_rows > 0) {
     $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-    if ($user["password"] === null) {
+    if ($user["password"] === "" || $user["password"] === null) {
       set_session("logged_in_as", $user_role);
       set_session($user_role, $user);
       redirect("/dashboard");

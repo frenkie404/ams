@@ -12,7 +12,7 @@ $associated_subject = isset($_POST["associated_subject"])
   : null;
 $admin_action = get_session("admin_action");
 
-$table = $admin_action === "create-student" ? "students" : "teachers";
+$table = $admin_action === "create_student" ? "students" : "teachers";
 $teacher_insert_query = "INSERT INTO $table 
                   VALUES(
                           '', 
@@ -36,7 +36,7 @@ $student_insert_query = "INSERT INTO $table
                   ";
 
 $result =
-  $admin_action === "create-student"
+  $admin_action === "create_student"
     ? mysqli_query($conn, $student_insert_query)
     : mysqli_query($conn, $teacher_insert_query);
 
